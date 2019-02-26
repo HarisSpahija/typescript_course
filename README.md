@@ -2,6 +2,4 @@
 
 Practise course by Maximillian Schwarzmüller
 
-link:
-
-https://www.udemy.com/understanding-typescript/
+# https://www.udemy.com/understanding-typescript/
