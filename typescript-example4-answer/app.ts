@@ -27,5 +27,3 @@ type Scientist = { firstName: string, experience: number }
 const scientist: Scientist = { firstName: "Will", experience: 12 };
 const { firstName, experience } = scientist;
 console.log(firstName, experience);
-
-Object
