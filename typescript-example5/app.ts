@@ -1,8 +1,8 @@
-class Person {
+class Person2 {
     name: string;
     lastName: string;
     private type: string;
-    protected age: number = 27;
+    protected age: number = 22;
 
     constructor(name: string, lastName: string, public username: string) {
         this.name = name;
@@ -20,24 +20,25 @@ class Person {
     }
 }
 
-const person = new Person("Haris", "Spahija", "Beedle");
-console.log(person)
-person.printAge();
+const haris = new Person2("Haris", "Spahija", "Beedle");
+console.log(haris)
+haris.printAge();
 // person.setType("Cool guy") // Won't work with private methods
 
 // Inheritance
-class Sophie extends Person {
+class Sophie extends Person2 {
     // name = "Sophie"
 
-    constructor(lastName: string,username: string) {
+    constructor(lastName: string, username: string) {
         super("Sophietje", lastName, username);
         this.age = 20;
     }
 
-
 }
 const sophie = new Sophie("Sophie", "SStumm98");
 console.log(sophie);
+
+
 
 
 // Getters & Setters
@@ -47,7 +48,7 @@ class Plant {
     get species() {
         return this._species;
     }
-    
+
     set species(value: string) {
         if (value.length > 3) {
             this._species = value;
@@ -98,3 +99,20 @@ console.log(newProject);
 newProject.changeName("Super IT Project");
 console.log(newProject);
 
+// Private constructors
+class OnlyOne {
+    private static instance: OnlyOne;
+
+    private constructor(public readonly name: string) {}
+    static getInstance() {
+        if (!OnlyOne.instance) {
+            OnlyOne.instance = new OnlyOne('The Only One')
+        }
+        return OnlyOne.instance;
+    }
+}
+
+// let wrong = new OnlyOne('The Only One'); --- Not possible due to the constructor being private. No instances after can be created
+let right = OnlyOne.getInstance();
+console.log(right.name);
+// right.name = 'Something else'; --- Cant reassign after name being set readonly
